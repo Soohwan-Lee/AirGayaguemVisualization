@@ -14,7 +14,7 @@ PitchEffect processor;
 
 
 ///UDP Variables
-String ip       = "192.168.43.34";  // the remote IP address
+String ip       = "127.0.0.1";  // the remote IP address
 int port        = 12000;    // the destination port
 
 

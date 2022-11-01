@@ -9,10 +9,10 @@ Server myServer;
 
 UDP udp;
 
-String ip       = "localhost";  // the remote IP address
+String ip       = "127.0.0.1";  // the remote IP address
 int port        = 6100;    // the destination port
 
-int viewport_w = 8000;
+int viewport_w = 4000;
 int viewport_h = 2000;
 //int viewport_w = 1000;
 //int viewport_h = 500;
@@ -31,7 +31,8 @@ float scale = 1.0;
 boolean checker = false;
 
 void settings() {
-  size(viewport_w, viewport_h, P2D);
+  //size(viewport_w, viewport_h, P2D);
+  fullScreen(P2D, 1);
   smooth(2);
 }
 
@@ -41,7 +42,6 @@ void setup() {
   udp.listen( true );
   myServerRunning = false;
   println("Server Running:" + "t" + myServerRunning);
-
 
   // main library context
   DwPixelFlow context = new DwPixelFlow(this);
@@ -61,7 +61,6 @@ void setup() {
   MyFluidData cb_fluid_data = new MyFluidData();
   fluid.addCallback_FluiData(cb_fluid_data);
 
-
   // pgraphics for fluid
   pg_fluid = (PGraphics2D) createGraphics(viewport_w, viewport_h, P2D);
   pg_fluid.smooth(4);
@@ -69,14 +68,11 @@ void setup() {
   pg_fluid.background(BACKGROUND_COLOR);
   pg_fluid.endDraw();
 
-
   // pgraphics for obstacles
   pg_obstacles = (PGraphics2D) createGraphics(viewport_w, viewport_h, P2D);
   pg_obstacles.smooth(0);
   pg_obstacles.beginDraw();
   pg_obstacles.clear();
-
-
 
   // circle-obstacles
   pg_obstacles.strokeWeight(10);
@@ -94,15 +90,12 @@ void setup() {
   pg_obstacles.noFill();
   pg_obstacles.ellipse(1*width/2f, 1*height/4f, radius, radius);
 
-
   // border-obstacle
   pg_obstacles.strokeWeight(20);
   pg_obstacles.stroke(64);
   pg_obstacles.noFill();
   pg_obstacles.rect(0, 0, pg_obstacles.width, pg_obstacles.height);
   pg_obstacles.endDraw();
-
-
 
   // class, that manages interactive drawing (adding/removing) of obstacles
   obstacle_painter = new ObstaclePainter(pg_obstacles);
@@ -190,10 +183,10 @@ void receive( byte[] data, String ip, int port ) {  // <-- extended handler
   
   if (message.charAt(0) == f) {
     checker = false;
-    println("Checker is fucking false");
+    println("Checker is False!");
   } else if (message.charAt(0) == t) {
     checker = true;
-    println("Checker is fucking true");
+    println("Checker is TRUE!");
   }
 }
 void keyPressed(){

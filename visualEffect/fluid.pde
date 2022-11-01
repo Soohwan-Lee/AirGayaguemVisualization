@@ -110,10 +110,10 @@ public class MyFluidData implements DwFluid2D.FluidData {
     //println("Checker is " + checker);
     if (checker) {
       ///// Draw the Black Ink
-      //radius = 15;
-      //vscale = 300;
-      radius = 200;
-      vscale = 10000;
+      //radius = 200;
+      //vscale = 3000;
+      radius = 30 * random(5,8);
+      vscale = 1000 * random(1,10);
       
       
       //px     = width/2;
