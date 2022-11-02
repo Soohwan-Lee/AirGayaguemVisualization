@@ -48,8 +48,13 @@ void handTracking() {
 
     // --------------------------------------------------
     // Drawing
-    hand.draw();
-
+    //hand.draw();
+    
+    for (Finger finger : hand.getFingers()) {
+      strokeWeight(30);
+      finger.draw();
+    }
+    
     ////print value
     if (handIsLeft == true) {
 
@@ -62,7 +67,6 @@ void handTracking() {
       }
       ////println("Left Hand Roll: " + handRoll);
       ////println("Pitch State is " + pitchState);
-      
       
       //println("Left Hand Pitch: " + handPitch);
       //println("Left Hand Yaw: " + handYaw);
@@ -91,7 +95,6 @@ void handTracking() {
         PVector middleVelocity = fingerMiddle.getVelocity();
         PVector ringVelocity = fingerRing.getVelocity();
         PVector pinkVelocity = fingerPink.getVelocity();
-
 
 
         if (handIsRight == true) {
